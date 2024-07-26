@@ -22,35 +22,12 @@ class FolderController extends LfmController
             ->with([
                 'root_folders' => array_map(function ($type) use ($folder_types) {
                     $path = $this->lfm->dir($this->helper->getRootFolder($type));
-
-                    $childrens = [];
-                    $f = 0;
-                    foreach($path->folders() as $folder) {
-                        $childrens[$f] = [
-                            'name' => $folder->name(),
-                            'url' => $path->path('working_dir').'/'.$folder->name(),
-                        ];
-                        $child_path = $path->path('working_dir').'/'.$folder->name();
-                        $child_path_folders = $this->lfm->dir($child_path)->folders();
-                        if($child_path_folders){
-                            $childrens[$f]['children'] = [];
-                            $c = 0;
-                            foreach($child_path_folders as $child_folder) {
-                                $childrens[$f]['children'][$c] = [
-                                    'name' => $child_folder->name(),
-                                    'url' => $child_path.'/'.$child_folder->name(),
-                                ];
-                                $c++;
-                            }
-                        }
-                        $f++;
-                    }
-                    $childrens = json_decode(json_encode($childrens));
+                    $tree = json_decode(json_encode($this->helper->getSubfoldersTree($path, $this->lfm)));
 
                     return (object) [
                         'name' => trans('laravel-filemanager::lfm.title-' . $type),
                         'url' => $path->path('working_dir'),
-                        'children' => $childrens,
+                        'children' => $tree,
                         'has_next' => ! ($type == end($folder_types)),
                     ];
                 }, $folder_types),

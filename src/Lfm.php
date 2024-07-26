@@ -148,6 +148,20 @@ class Lfm
         return '/' . $folder;
     }
 
+    public function getSubfoldersTree($path, $lfm)
+    {
+        $childrens = [];
+        foreach ($path->folders() as $folder) {
+            $child_path = $path->path('working_dir') . '/' . $folder->name();
+            $childrens[] = [
+                'name' => $folder->name(),
+                'url' => $child_path,
+                'children' => $this->getSubfoldersTree($lfm->dir($child_path), $lfm)
+            ];
+        }
+        return $childrens;
+    }
+
     public function getThumbFolderName()
     {
         return $this->config->get('lfm.thumb_folder_name');

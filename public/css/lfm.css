@@ -178,7 +178,26 @@ a {
 
 .nav-pills > .sub-item > .nav-link {
   height: 3rem;
+}
+
+.nav-pills > .sub-item.level-1 > .nav-link {
+  padding-left: 1.5rem;
+}
+
+.nav-pills > .sub-item.level-2 > .nav-link {
   padding-left: 3rem;
+}
+
+.nav-pills > .sub-item.level-3 > .nav-link {
+  padding-left: 4.5rem;
+}
+
+.nav-pills > .sub-item.level-4 > .nav-link {
+  padding-left: 6rem;
+}
+
+.nav-pills > .sub-item.level-5 > .nav-link {
+  padding-left: 7.5rem;
 }
 
 .nav-pills > li.active > a, .nav-pills > li:hover > a {

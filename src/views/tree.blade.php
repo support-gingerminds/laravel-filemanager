@@ -16,6 +16,24 @@
   </div>
 </div>
 
+@php
+  function renderSubdirectories($directories, $level = 1) {
+      foreach ($directories as $directory) {
+          $class = 'level-' . $level;
+          echo '<li class="nav-item sub-item ' . $class . '">';
+          echo '<a class="nav-link" href="#" data-type="0" data-path="' . $directory->url . '">';
+          echo '<i class="fa fa-folder fa-fw"></i> ' . $directory->name;
+          echo '</a>';
+          if (isset($directory->children)) {
+              echo '<ul class="nav nav-pills flex-column">';
+              renderSubdirectories($directory->children, $level + 1);
+              echo '</ul>';
+          }
+          echo '</li>';
+      }
+  }
+@endphp
+
 <ul class="nav nav-pills flex-column">
   @foreach($root_folders as $root_folder)
     <li class="nav-item">
@@ -23,21 +41,10 @@
         <i class="fa fa-folder fa-fw"></i> {{ $root_folder->name }}
       </a>
     </li>
-    @foreach($root_folder->children as $directory)
-      <li class="nav-item sub-item">
-        <a class="nav-link" href="#" data-type="0" data-path="{{ $directory->url }}">
-          <i class="fa fa-folder fa-fw"></i> {{ $directory->name }}
-        </a>
-      </li>
-      @if(isset($directory->children))
-        @foreach($directory->children as $subdirectory)
-          <li class="nav-item sub-sub-item">
-            <a class="nav-link" href="#" data-type="0" data-path="{{ $subdirectory->url }}">
-              <i class="fa fa-folder fa-fw"></i> {{ $subdirectory->name }}
-            </a>
-          </li>
-        @endforeach
-      @endif
-    @endforeach
+    @if(isset($root_folder->children))
+      <ul class="nav nav-pills flex-column">
+        @php renderSubdirectories($root_folder->children, 1); @endphp
+      </ul>
+    @endif
   @endforeach
 </ul>
