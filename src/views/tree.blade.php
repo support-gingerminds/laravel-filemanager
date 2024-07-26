@@ -24,11 +24,20 @@
       </a>
     </li>
     @foreach($root_folder->children as $directory)
-    <li class="nav-item sub-item">
-      <a class="nav-link" href="#" data-type="0" data-path="{{ $directory->url }}">
-        <i class="fa fa-folder fa-fw"></i> {{ $directory->name }}
-      </a>
-    </li>
+      <li class="nav-item sub-item">
+        <a class="nav-link" href="#" data-type="0" data-path="{{ $directory->url }}">
+          <i class="fa fa-folder fa-fw"></i> {{ $directory->name }}
+        </a>
+      </li>
+      @if(isset($directory->children))
+        @foreach($directory->children as $subdirectory)
+          <li class="nav-item sub-sub-item">
+            <a class="nav-link" href="#" data-type="0" data-path="{{ $subdirectory->url }}">
+              <i class="fa fa-folder fa-fw"></i> {{ $subdirectory->name }}
+            </a>
+          </li>
+        @endforeach
+      @endif
     @endforeach
   @endforeach
 </ul>
