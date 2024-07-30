@@ -602,7 +602,7 @@ function download(items) {
 
     setTimeout(function () {
       location.href = lfm_route + '/download?' + $.param(data);
-    }, index * 100);
+    }, index * 500);
   });
 }
 
