@@ -31,7 +31,8 @@ class FolderController extends LfmController
                         'has_next' => ! ($type == end($folder_types)),
                     ];
                 }, $folder_types),
-            ]);
+            ])
+            ->withHelper($this->helper);
     }
 
     /**
