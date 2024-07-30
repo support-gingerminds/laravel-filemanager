@@ -176,6 +176,21 @@ function clearSelected () {
   updateSelectedStyle();
 }
 
+function toggleSubdirectories(id, icon) {
+  if (icon.classList.contains('down')) {
+    icon.classList.remove('down');
+  } else {
+    icon.classList.add('down');
+  }
+
+  var element = document.getElementById(id);
+  if (element.classList.contains('hidden')) {
+    element.classList.remove('hidden');
+  } else {
+    element.classList.add('hidden');
+  }
+}
+
 function updateSelectedStyle() {
   items.forEach(function (item, index) {
     $('[data-id=' + index + ']')
@@ -768,7 +783,7 @@ function usingTinymce4AndColorbox() {
 }
 
 function usingTinymce5(){
-    return !!getUrlParam('editor');
+  return !!getUrlParam('editor');
 }
 
 function usingCkeditor3() {

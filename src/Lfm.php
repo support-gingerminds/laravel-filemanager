@@ -291,6 +291,34 @@ class Lfm
         throw new \Exception(trans(self::PACKAGE_NAME . '::lfm.error-' . $error_type, $variables));
     }
 
+    public function renderSubdirectories($type, $directories, $items = [], $level = 1) {
+        foreach ($directories as $directory) {
+            $class = 'level-' . $level;
+            $id = uniqid();
+            echo '<li class="nav-item sub-item ' . $class . '">';
+            if (isset($directory->children) && count($directory->children) > 0) {
+                echo view('laravel-filemanager::components.toggle-icon', ['type' => $type, 'index' => $id])->render();
+            }
+            echo '<a class="nav-link" href="#" data-type="0" '.($type === 'tree' ? 'data-path="' . $directory->url . '"' : '').' '.($type === 'move' ? 'onclick="moveToNewFolder(`' . $directory->url . '`)"' : '').'>';
+            echo '<i class="fa fa-folder fa-fw"></i> ' . $directory->name;
+            if($type === 'move'){
+                echo '<input type="hidden" id="goToFolder" name="goToFolder" value="' . $directory->url . '">';
+                echo '<div id="items">';
+                foreach ($items as $i) {
+                    echo '<input type="hidden" id="' . $i . '" name="items[]" value="' . $i . '">';
+                }
+                echo '</div>';
+            }
+            echo '</a>';
+            if (isset($directory->children) && count($directory->children) > 0) {
+                echo '<ul id="root-' . $type . '-' . $id . '" class="nav nav-pills flex-column subdir hidden">';
+                self::renderSubdirectories($type, $directory->children, $items, $level + 1);
+                echo '</ul>';
+            }
+            echo '</li>';
+        }
+    }
+
     /**
      * Generates routes of this package.
      *
