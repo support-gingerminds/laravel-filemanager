@@ -63,7 +63,8 @@ class ItemsController extends LfmController
                     ];
                 }, $folder_types),
             ])
-            ->with('items', $items);
+            ->with('items', $items)
+            ->withHelper($this->helper);
     }
 
     public function doMove()
