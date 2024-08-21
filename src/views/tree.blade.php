@@ -2,13 +2,13 @@
     @foreach($root_folders as $root_folder)
         <li class="nav-item">
             @if(isset($root_folder->children) && count($root_folder->children) > 0)
-                {{ view('laravel-filemanager::components.toggle-icon', ['type' => 'tree', 'index' => $loop->index])}}
+                {{ view('laravel-filemanager::components.toggle-icon', ['type' => 'tree', 'index' => $loop->index, 'class' => 'down'])}}
             @endif
             <a class="nav-link" href="#" data-type="0" data-path="{{ $root_folder->url }}">
                 <i class="fa fa-folder fa-fw"></i> {{ $root_folder->name }}
             </a>
             @if(isset($root_folder->children) && count($root_folder->children) > 0)
-                <ul id="root-tree-{{ $loop->index }}" class="nav nav-pills flex-column subdir hidden">
+                <ul id="root-tree-{{ $loop->index }}" class="nav nav-pills flex-column subdir">
                     {{ $helper->renderSubdirectories('tree', $root_folder->children, [], 1) }}
                 </ul>
             @endif
