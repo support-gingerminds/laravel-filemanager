@@ -150,13 +150,14 @@ class Lfm
 
     public function getSubfoldersTree($path, $lfm)
     {
+        $path_object = $lfm->dir($path);
         $childrens = [];
-        foreach ($path->folders() as $folder) {
-            $child_path = $path->path('working_dir') . '/' . $folder->name();
+        foreach ($path_object->folders() as $folder) {
+            $child_path = $path . '/' . $folder->name();
             $childrens[] = [
                 'name' => $folder->name(),
                 'url' => $child_path,
-                'children' => $this->getSubfoldersTree($lfm->dir($child_path), $lfm)
+                'children' => $this->getSubfoldersTree($child_path, $lfm)
             ];
         }
         return $childrens;
