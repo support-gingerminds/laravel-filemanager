@@ -46,7 +46,7 @@ class ItemsController extends LfmController
             ->with([
                 'root_folders' => array_map(function ($type) use ($folder_types) {
                     $path = $this->lfm->dir($this->helper->getRootFolder($type));
-                    $tree = json_decode(json_encode($this->helper->getSubfoldersTree($path, $this->lfm)));
+                    $tree = json_decode(json_encode($this->helper->getSubfoldersTree($path->path('working_dir'), $this->lfm)));
 
                     return (object) [
                         'name' => trans('laravel-filemanager::lfm.title-' . $type),
