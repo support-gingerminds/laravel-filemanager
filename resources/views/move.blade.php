@@ -2,7 +2,7 @@
     @foreach($root_folders as $root_folder)
         <li class="nav-item">
             @if(isset($root_folder->children) && count($root_folder->children) > 0)
-                {{ view('laravel-filemanager::components.toggle-icon', ['type' => 'move', 'index' => $loop->index])}}
+                {{ view('laravel-filemanager::components.toggle-icon', ['type' => 'move', 'index' => $loop->index, 'class' => 'down'])}}
             @endif
             <a class="nav-link" href="#" data-type="0" onclick="moveToNewFolder(`{{$root_folder->url}}`)">
                 <i class="fa fa-folder fa-fw"></i> {{ $root_folder->name }}
@@ -15,7 +15,7 @@
             </a>
         </li>
         @if(isset($root_folder->children) && count($root_folder->children) > 0)
-            <ul id="root-move-{{ $loop->index }}" class="nav nav-pills flex-column subdir hidden">
+            <ul id="root-move-{{ $loop->index }}" class="nav nav-pills flex-column subdir">
                 {{ $helper->renderSubdirectories('move', $root_folder->children, $items, 1) }}
             </ul>
         @endif
