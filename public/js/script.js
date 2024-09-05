@@ -150,6 +150,15 @@ $(document).on('click', '#keyword-reset-button', function() {
   loadItems();
 });
 
+let typingTimer;
+$('#keyword').on('input', function() {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(function() {
+    show_list = $(this).data('display');
+    loadItems();
+  }, 300);
+});
+
 $(document).on('click', '[data-action]', function() {
   window[$(this).data('action')]($(this).data('multiple') ? getSelectedItems() : getOneSelectedElement());
 });
@@ -815,6 +824,7 @@ function defaultParameters() {
   return {
     working_dir: $('#working_dir').val(),
     type: $('#type').val(),
+    keyword: $('#keyword').val(),
   };
 }
 
