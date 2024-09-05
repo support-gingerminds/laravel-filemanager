@@ -259,14 +259,24 @@
 
     var sortings = [
       {
-        by: 'alphabetic',
+        by: 'alphabetic-asc',
         icon: 'sort-alpha-down',
-        label: lang['nav-sort-alphabetic']
+        label: lang['nav-sort-alphabetic-asc']
       },
       {
-        by: 'time',
+        by: 'alphabetic-desc',
+        icon: 'sort-alpha-up',
+        label: lang['nav-sort-alphabetic-desc']
+      },
+      {
+        by: 'time-asc',
         icon: 'sort-numeric-down',
-        label: lang['nav-sort-time']
+        label: lang['nav-sort-time-asc']
+      },
+      {
+        by: 'time-desc',
+        icon: 'sort-numeric-up',
+        label: lang['nav-sort-time-desc']
       }
     ];
   </script>
