@@ -7,8 +7,10 @@ return [
     'nav-thumbnails'    => 'Vignettes',
     'nav-list'          => 'Liste',
     'nav-sort'          => 'Trier',
-    'nav-sort-alphabetic'=> 'Trier par ordre alphabétique',
-    'nav-sort-time'     => 'Trier par date',
+    'nav-sort-alphabetic-asc'=> 'Trier par ordre alphabétique croissant',
+    'nav-sort-alphabetic-desc'=> 'Trier par ordre alphabétique décroissant',
+    'nav-sort-time-asc'     => 'Trier par date croissante',
+    'nav-sort-time-desc'     => 'Trier par date décroissante',
 
     'menu-rename'       => 'Renommer',
     'menu-delete'       => 'Effacer',
