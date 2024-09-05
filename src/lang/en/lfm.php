@@ -7,8 +7,10 @@ return [
     'nav-thumbnails'    => 'Thumbnails',
     'nav-list'          => 'List',
     'nav-sort'          => 'Sort',
-    'nav-sort-alphabetic'=> 'Sort By Alphabets',
-    'nav-sort-time'     => 'Sort By Time',
+    'nav-sort-alphabetic-asc'=> 'Sort By Alphabets (ascending)',
+    'nav-sort-alphabetic-desc'=> 'Sort By Alphabets (descending)',
+    'nav-sort-time-asc'     => 'Sort By Time (ascending)',
+    'nav-sort-time-desc'     => 'Sort By Time (descending)',
 
     'menu-rename'       => 'Rename',
     'menu-delete'       => 'Delete',
