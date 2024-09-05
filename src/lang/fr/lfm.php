@@ -36,6 +36,8 @@ return [
     'type-folder'       => 'Dossier',
 
     'message-empty'     => 'Dossier est vide',
+    'search'            => 'Rechercher dans ce dossier',
+
     'message-choose'    => 'Choisir un/des fichier(s)',
     'message-delete'    => 'Êtes-vous sûr de vouloir supprimer ce fichier ?',
     'message-name'      => 'Nom du dossier :',

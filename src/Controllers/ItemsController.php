@@ -7,6 +7,7 @@ use UniSharp\LaravelFilemanager\Events\FileIsMoving;
 use UniSharp\LaravelFilemanager\Events\FileWasMoving;
 use UniSharp\LaravelFilemanager\Events\FolderIsMoving;
 use UniSharp\LaravelFilemanager\Events\FolderWasMoving;
+use Illuminate\Http\Request;
 
 class ItemsController extends LfmController
 {
@@ -15,12 +16,19 @@ class ItemsController extends LfmController
      *
      * @return mixed
      */
-    public function getItems()
+    public function getItems(Request $request)
     {
         $currentPage = self::getCurrentPageFromRequest();
 
         $perPage = $this->helper->getPaginationPerPage();
         $items = array_merge($this->lfm->folders(), $this->lfm->files());
+
+        $keyword = $request->keyword;
+        if (!empty($keyword)) {
+            $items = array_values(array_filter($items, function ($item) use ($keyword) {
+                return $this->like_match("%".$keyword."%", $item->{'name'});
+            }));
+        }
 
         return [
             'items' => array_map(function ($item) {
@@ -34,6 +42,12 @@ class ItemsController extends LfmController
             'display' => $this->helper->getDisplayMode(),
             'working_dir' => $this->lfm->path('working_dir'),
         ];
+    }
+
+    public function like_match($pattern, $subject)
+    {
+        $pattern = str_replace('%', '.*', preg_quote($pattern, '/'));
+        return (bool) preg_match("/^{$pattern}$/i", $subject);
     }
 
     public function move()
@@ -104,5 +118,11 @@ class ItemsController extends LfmController
         $currentPage = $currentPage < 1 ? 1 : $currentPage;
 
         return $currentPage;
+    }
+
+    private static function getKeywordFromRequest()
+    {
+        $keyword = request()->get('keyword', "");
+        return $keyword;
     }
 }

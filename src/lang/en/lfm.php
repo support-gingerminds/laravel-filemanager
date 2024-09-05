@@ -36,6 +36,7 @@ return [
     'type-folder'       => 'Folder',
 
     'message-empty'     => 'Folder is empty.',
+    'search'            => 'Search in this folder',
     'message-choose'    => 'Choose File(s)',
     'message-delete'    => 'Are you sure you want to delete this item?',
     'message-name'      => 'Folder name:',
