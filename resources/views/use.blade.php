@@ -1,4 +1,4 @@
-<script type='text/javascript'>
+<script type='text/javascript' nonce="4qtr19v5uce5kmb5fj">
   function getUrlParam(paramName) {
     var reParam = new RegExp('(?:[\?&]|&)' + paramName + '=([^&]+)', 'i');
     var match = window.location.search.match(reParam);
