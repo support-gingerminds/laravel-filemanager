@@ -16,7 +16,7 @@
     @endforeach
 </ul>
 
-<script>
+<script nonce="4qtr19v5uce5kmb5fj">
   function toggleSubdirectories(id, icon) {
     if (icon.classList.contains('down')) {
       icon.classList.remove('down');

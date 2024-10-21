@@ -209,7 +209,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
 <script src="{{ asset('vendor/laravel-filemanager/js/cropper.min.js') }}"></script>
 <script src="{{ asset('vendor/laravel-filemanager/js/dropzone.min.js') }}"></script>
-<script>
+<script nonce="4qtr19v5uce5kmb5fj">
   var lang = {!! json_encode(trans('laravel-filemanager::lfm')) !!};
   var actions = [
     // {
@@ -285,10 +285,10 @@
     }
   ];
 </script>
-<script>{!! \File::get(base_path('vendor/support-gingerminds/laravel-filemanager/public/js/script.js')) !!}</script>
+<script nonce="4qtr19v5uce5kmb5fj">{!! \File::get(base_path('vendor/support-gingerminds/laravel-filemanager/public/js/script.js')) !!}</script>
 {{-- Use the line below instead of the above if you need to cache the script. --}}
 {{-- <script src="{{ asset('vendor/laravel-filemanager/js/script.js') }}"></script> --}}
-<script>
+<script nonce="4qtr19v5uce5kmb5fj">
   Dropzone.options.uploadForm = {
     paramName: "upload[]", // The name that will be used to transfer the file
     uploadMultiple: false,

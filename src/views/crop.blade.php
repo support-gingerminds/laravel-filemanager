@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<script>
+<script nonce="4qtr19v5uce5kmb5fj">
     var $image = null,
         options = {};
 
