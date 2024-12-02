@@ -185,13 +185,14 @@ function clearSelected () {
   updateSelectedStyle();
 }
 
-function toggleSubdirectories(id, icon) {
-  if (icon.classList.contains('down')) {
-    icon.classList.remove('down');
+function toggleSubdirectories(e) {
+  if (e.classList.contains('down')) {
+    e.classList.remove('down');
   } else {
-    icon.classList.add('down');
+    e.classList.add('down');
   }
 
+  const id = e.getAttribute('data-id');
   var element = document.getElementById(id);
   if (element.classList.contains('hidden')) {
     element.classList.remove('hidden');

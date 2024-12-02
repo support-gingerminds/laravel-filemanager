@@ -17,14 +17,15 @@
 </ul>
 
 <script nonce="4qtr19v5uce5kmb5fj">
-  function toggleSubdirectories(id, icon) {
-    if (icon.classList.contains('down')) {
-      icon.classList.remove('down');
+  function toggleSubdirectories(e) {
+    if (e.classList.contains('down')) {
+      e.classList.remove('down');
     } else {
-      icon.classList.add('down');
+      e.classList.add('down');
     }
 
-    var element = document.getElementById(id);
+    const id = e.getAttribute('data-id');
+    const element = document.getElementById(id);
     if (element.classList.contains('hidden')) {
       element.classList.remove('hidden');
     } else {

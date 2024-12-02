@@ -300,7 +300,7 @@ class Lfm
             if (isset($directory->children) && count($directory->children) > 0) {
                 echo view('laravel-filemanager::components.toggle-icon', ['type' => $type, 'index' => $id])->render();
             }
-            echo '<a class="nav-link" href="#" data-type="0" '.($type === 'tree' ? 'data-path="' . $directory->url . '"' : '').' '.($type === 'move' ? 'onclick="moveToNewFolder(`' . $directory->url . '`)"' : '').'>';
+            echo '<a class="nav-link" href="#" data-type="0" '.($type === 'tree' ? 'data-path="' . $directory->url . '"' : '').' '.($type === 'move' ? 'data-url="' . $directory->url . '" onclick="moveToNewFolder(this)"' : '').'>';
             echo '<i class="fa fa-folder fa-fw"></i> ' . $directory->name;
             if($type === 'move'){
                 echo '<input type="hidden" id="goToFolder" name="goToFolder" value="' . $directory->url . '">';

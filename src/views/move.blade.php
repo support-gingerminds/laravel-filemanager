@@ -4,7 +4,7 @@
             @if(isset($root_folder->children) && count($root_folder->children) > 0)
                 {{ view('laravel-filemanager::components.toggle-icon', ['type' => 'move', 'index' => $loop->index, 'class' => 'down'])}}
             @endif
-            <a class="nav-link" href="#" data-type="0" onclick="moveToNewFolder(`{{$root_folder->url}}`)">
+                <a class="nav-link" href="#" data-type="0" data-url="{{$root_folder->url}}" onclick="moveToNewFolder(this)">
                 <i class="fa fa-folder fa-fw"></i> {{ $root_folder->name }}
                 <input type="hidden" id="goToFolder" name="goToFolder" value="{{ $root_folder->url }}">
                 <div id="items">
@@ -23,13 +23,14 @@
 </ul>
 
 <script nonce="4qtr19v5uce5kmb5fj">
-  function moveToNewFolder($folder) {
+  function moveToNewFolder(e) {
+    const url = e.getAttribute('data-url');
     $("#notify").modal('hide');
     var items = [];
     $("#items").find("input").each(function() { items.push(this.id); });
     performLfmRequest('domove', {
       items: items,
-      goToFolder: $folder
+      goToFolder: url
     }).done(refreshFoldersAndItems);
   }
 </script>
