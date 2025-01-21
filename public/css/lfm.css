@@ -474,7 +474,8 @@ time {
 
 @media (min-width: 992px) {
   .search-by-keyword-container {
-    top: 70px;
+    top: 25px;
+    right: 25px;
   }
 }
 
