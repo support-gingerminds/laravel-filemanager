@@ -206,10 +206,18 @@ class LfmPath
         }
 
         list($sort_type, $sort_direction) = explode('-', $sort_by);
-        if($sort_type) $sort_type = 'name';
+
+        // Si ordre alphabetic on change le sort_type pour name (car name est le nom de la valeur dans le tableau de données)
+        if($sort_type === 'alphabetic')
+            $sort_type = 'name';
 
         uasort($arr_items, function ($a, $b) use ($sort_type, $sort_direction) {
-            $comparison = strcasecmp($a->{$sort_type}, $b->{$sort_type});
+            $valA = $a->{$sort_type};
+            $valB = $b->{$sort_type};
+
+            // Comparaison en tri naturel insensible à la casse
+            $comparison = strnatcasecmp($valA, $valB);
+
             return $sort_direction == 'asc' ? $comparison : -$comparison;
         });
 
