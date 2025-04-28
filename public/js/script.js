@@ -110,6 +110,7 @@ $('#multi_selection_toggle').click(function () {
 
 $('#to-previous').click(function () {
   var previous_dir = getPreviousDir();
+  $('#keyword').val('');
   if (previous_dir == '') return;
   goTo(previous_dir);
 });
@@ -251,6 +252,7 @@ function toggleActions() {
 // ======================
 
 $(document).on('click', '#tree a', function (e) {
+  $('#keyword').val('');
   goTo($(e.target).closest('a').data('path'));
   toggleMobileTree(false);
 });
@@ -475,6 +477,7 @@ function loadItems(page) {
               if (item.is_file) {
                 use(getSelectedItems());
               } else {
+                $('#keyword').val('');
                 goTo(item.url);
               }
             });
@@ -531,6 +534,7 @@ function loadItems(page) {
         } else {
           li.click(function () {
             // go to corresponding path
+            $('#keyword').val('');
             goTo('/' + validSegments.slice(0, 1 + index).join('/'));
           });
         }
