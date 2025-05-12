@@ -609,6 +609,7 @@ function download(items) {
 }
 
 function open(item) {
+  $('#keyword').val('');
   goTo(item.url);
 }
 
