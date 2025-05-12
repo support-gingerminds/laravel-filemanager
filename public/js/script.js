@@ -620,6 +620,11 @@ function download(items) {
   });
 }
 
+function open(item) {
+  $('#keyword').val('');
+  goTo(item.url);
+}
+
 function preview(items) {
   var carousel = $('#carouselTemplate').clone().attr('id', 'previewCarousel').removeClass('d-none');
   var imageTemplate = carousel.find('.carousel-item').clone().removeClass('active');
