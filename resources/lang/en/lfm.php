@@ -20,6 +20,7 @@ return [
     'menu-crop'         => 'Crop',
     'menu-move'         => 'Move',
     'menu-multiple'     => 'Multi-selection',
+    'menu-cancel-selection' => 'Cancel selection',
 
     'title-page'        => 'File Manager',
     'title-panel'       => 'Laravel FileManager',

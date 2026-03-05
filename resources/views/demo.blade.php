@@ -51,7 +51,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2 class="mt-4">Embed file manager</h2>
-        <iframe src="/filemanager" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
+        <iframe src="/{{config('lfm.url_prefix') ?: 'filemanager'}}" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
       </div>
     </div>
   </div>
@@ -185,7 +185,7 @@
           tooltip: 'Insert image with filemanager',
           click: function() {
 
-            lfm({type: 'image', prefix: '/filemanager'}, function(lfmItems, path) {
+            lfm({type: 'image', prefix: route_prefix}, function(lfmItems, path) {
               lfmItems.forEach(function (lfmItem) {
                 context.invoke('insertImage', lfmItem.url);
               });
